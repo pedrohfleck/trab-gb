@@ -2,13 +2,15 @@ public class TeleSena {
 	
 	private double valorVenda = 10.00;
 	private int[] conjunto1, conjunto2  = new int[25];
-	
+    
+    // Construtor de TeleSena 
 	public TeleSena(int[] c1, int[] c2) {
 		this.conjunto1 = c1;
 		this.conjunto2 = c2;
 		
     }
 
+    // Métodos Get
     public double getValorVenda(){
         return this.valorVenda;
     }
@@ -21,6 +23,7 @@ public class TeleSena {
         return this.conjunto2;
     }
 
+    // Métodos Set
     public void setConjunto1(int[] c1Set){
         this.conjunto1 = c1Set;
     }

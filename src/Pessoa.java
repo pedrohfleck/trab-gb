@@ -5,11 +5,13 @@ public class Pessoa {
 	private TeleSena[] teleSenas = new TeleSena[15];
 	private double premio;
 	
+	// Construtor de Pessoa 
 	public Pessoa(String n, TeleSena[] ts) {
 		this.nome = n;
 		this.teleSenas = ts;
 	}
-	
+
+    // Métodos Get	
 	public TeleSena[] getTeleSenas() {
 		return this.teleSenas;
 	}
@@ -20,5 +22,10 @@ public class Pessoa {
 	
 	public double getPremio() {
 		return this.premio;
+	}
+
+	// Métodos Set
+	public void setPremio(double p) {
+		this.premio = p;
 	}
 }

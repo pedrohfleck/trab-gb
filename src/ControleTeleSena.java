@@ -5,11 +5,17 @@ public class ControleTeleSena {
 	
 	public void vendaTele(){
 		for (int i = 0; i < 20; i++) {
-			// TeleSena ts = new TeleSena( );
-			// Pessoa p = new Pessoa("Fulano" + (i+1),);
+			//Cria as tele senas a serem compradas (quantidade aleatória)
+			int nTeles = (int)(Math.random() * 15 + 1);
+			TeleSena[] teles = new TeleSena[nTeles];
+			for (int j = 0; j < nTeles; j++) {
+				teles[j] = new TeleSena(sorteio(),sorteio());				
+			}							
+			Pessoa p = new Pessoa("Fulano" + (i+1),teles);
 		}
 	}
 
+	// Método que retorna a quantidade de TeleSenas vendidas
 	static int quantTele() {
 		int quant = 0;
 		for (Pessoa pessoa : pessoas) {
@@ -19,6 +25,7 @@ public class ControleTeleSena {
 		return quant;
 	}
 	
+	// Método que sorteia os números da TeleSena vencedora
 	public int[] sorteio(){
 		int[] sorteados = new int[25];
 		for (int i = 0; i < 25; i++) {
@@ -27,7 +34,7 @@ public class ControleTeleSena {
 			for (int j = 0; j < sorteados.length; j++) {
 				if(sorteados[j] == nmrSort){
 					nmrSort =  (int)(Math.random() * 60 + 1);
-					j = 0;
+					j = -1;
 				}
 			}
 			sorteados[i] = nmrSort;
@@ -36,6 +43,7 @@ public class ControleTeleSena {
 		return sorteados;
 	}
 
+	// Método retorna string com as informações necessárias 
 	public String printInfo() {
 		String msg = "Numero de sorteados = " + pessoas.length + "\n" +
 				"Quantidade de TeleSenas	 vendidas = " + quantTele()+ "\n" +
