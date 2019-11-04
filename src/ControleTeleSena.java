@@ -12,7 +12,9 @@ public class ControleTeleSena {
 				teles[j] = new TeleSena(sorteio(),sorteio());				
 			}							
 			Pessoa p = new Pessoa("Fulano" + (i+1),teles);
+			pessoas[i] = p;
 		}
+		ganhadores = pessoas;
 	}
 
 	// Método que retorna a quantidade de TeleSenas vendidas
@@ -38,7 +40,6 @@ public class ControleTeleSena {
 				}
 			}
 			sorteados[i] = nmrSort;
-			System.out.println(sorteados[i]);			
 		}
 		return sorteados;
 	}
@@ -46,15 +47,15 @@ public class ControleTeleSena {
 	// Método retorna string com as informações necessárias 
 	public String printInfo() {
 		String msg = "Numero de sorteados = " + pessoas.length + "\n" +
-				"Quantidade de TeleSenas	 vendidas = " + quantTele()+ "\n" +
+				"Quantidade de TeleSenas vendidas = " + quantTele()+ "\n" +
 				"Quantidade de ganhadores = " + this.ganhadores.length + "\n" +
-				"Nome de cada um dos ganhadores: ";
+				"Nome de cada um dos ganhadores: " + "\n";
 		
 		for (Pessoa pessoa : ganhadores) {
 			msg += pessoa.getNome() + "\n";
 		}
 		
-		msg += "Valor do premio para cada ganhador: ";
+		msg += "Valor do premio para cada ganhador: " + "\n";
 		
 		double totalPremio = 0.00;
 		
