@@ -5,5 +5,6 @@ public class Testes {
             
         cts.vendaTele();
         System.out.println(cts.printInfo());
+        
     }    
 }

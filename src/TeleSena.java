@@ -1,10 +1,10 @@
 public class TeleSena {
 	
 	private double valorVenda = 10.00;
-	private int[] conjunto1, conjunto2  = new int[25];
+	private boolean[] conjunto1, conjunto2  = new boolean[25];
     
     // Construtor de TeleSena 
-	public TeleSena(int[] c1, int[] c2) {
+	public TeleSena(boolean[] c1, boolean[] c2) {
 		this.conjunto1 = c1;
 		this.conjunto2 = c2;
 		
@@ -15,20 +15,20 @@ public class TeleSena {
         return this.valorVenda;
     }
     
-    public int[] getConjunto1(){
+    public boolean[] getConjunto1(){
         return this.conjunto1;
     }
 
-    public int[] getConjunto2(){
+    public boolean[] getConjunto2(){
         return this.conjunto2;
     }
 
     // Métodos Set
-    public void setConjunto1(int[] c1Set){
+    public void setConjunto1(boolean[] c1Set){
         this.conjunto1 = c1Set;
     }
 
-    public void setConjunto2(int[] c2Set){
+    public void setConjunto2(boolean[] c2Set){
         this.conjunto1 = c2Set;
     }
 }
