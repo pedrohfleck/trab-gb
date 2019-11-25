@@ -4,6 +4,7 @@ public class Testes {
         ControleTeleSena cts = new ControleTeleSena();
             
         cts.vendaTele();
+        cts.sorteiaGanhador();
         System.out.println(cts.printInfo());
         
     }    

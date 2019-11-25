@@ -16,7 +16,7 @@ public class ControleTeleSena {
 			Pessoa p = new Pessoa("Fulano" + (i+1),teles);
 			pessoas[i] = p;
 		}
-		ganhadores = pessoas;
+		// ganhadores = pessoas;
 	}
 
 	// Método que retorna a quantidade de TeleSenas vendidas
@@ -62,17 +62,61 @@ public class ControleTeleSena {
 
 	public void sorteiaGanhador(){
 		boolean[] numerosGanhadores = sorteadorDeNumeros();
-		
+		int cont1 = 0,cont2 = 0;
+		for (Pessoa p : pessoas) {
+			TeleSena[] teles = p.getTeleSenas();
+			for (TeleSena t : teles) {
+				boolean[] c1 = t.getConjunto1();
+				boolean[] c2 = t.getConjunto2();		
+				for (int i = 0; i < numerosGanhadores.length; i++) {
+					if(numerosGanhadores[i]== true && c1[i] == true){
+						cont1++;
+					}
+					if(numerosGanhadores[i]== true && c2[i] == true){
+						cont2++;
+					}
+				}	
+				if(cont1 == 25 || cont2 == 25){ 
+					// adicionar pessoa ao array ganhadores
+					insereGanhador(p);
+					cont1 = 0;
+					cont2 = 0;
+					break;
+				}else{
+					cont1 = 0;
+					cont2 = 0;
+				}
+			}
+		} 
 	}
 
+	public boolean insereGanhador(Pessoa g) {
+        
+        for (int i = 0; i < ganhadores.length; i++) {
+            
+            if (ganhadores[i] == null) {
+                
+                ganhadores[i] = g;
+                return true;
+                
+            }
+            
+        }
+        
+        return false;
+        
+    }
 	// Método retorna string com as informações necessárias 
 	public String printInfo() {
 		String msg = "Numero de sorteados = " + pessoas.length + "\n" +
 				"Quantidade de TeleSenas vendidas = " + quantTele()+ "\n" +
-				"Quantidade de ganhadores = " + ganhadores.length + "\n" +
+				"Quantidade de ganhadores = " + ganhadores.length + "\n" + 
 				"Nome de cada um dos ganhadores: " + "\n";
 		
 		for (Pessoa pessoa : ganhadores) {
+			if(pessoa == null){
+				break;
+			}
 			msg += pessoa.getNome() + "\n";
 		}
 		
@@ -81,6 +125,9 @@ public class ControleTeleSena {
 		double totalPremio = 0.00;
 		
 		for (Pessoa pessoa : ganhadores) {
+			if(pessoa == null){
+				break;
+			}
 			msg += "R$ " + pessoa.getPremio() + "\n";
 			totalPremio += pessoa.getPremio();
 		}
